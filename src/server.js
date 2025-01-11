@@ -4,6 +4,8 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import connectDB from './config/db.config.js';
 import authRoutes from './routes/auth.routes.js';
+import workoutRoutes from './routes/workout.routes.js';  // Add this
+import goalRoutes from './routes/goal.routes.js';
 
 dotenv.config();
 
@@ -15,14 +17,11 @@ connectDB();
 // Middleware
 app.use(cors());
 app.use(express.json());
+app.use('/api/goals', goalRoutes);
 
 // Routes
 app.use('/api/auth', authRoutes);
-
-// Test route
-app.get('/api/test', (req, res) => {
-  res.json({ message: 'API is working!' });
-});
+app.use('/api/workouts', workoutRoutes);  // Add this
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {

@@ -9,33 +9,29 @@ const goalSchema = new mongoose.Schema({
   },
   title: {
     type: String,
-    required: true,
-    trim: true
+    required: true
   },
-  description: {
-    type: String,
-    trim: true
-  },
+  description: String,
   type: {
     type: String,
     required: true,
-    enum: ['weight', 'strength', 'endurance', 'flexibility', 'other']
+    enum: ['weight', 'strength', 'cardio', 'endurance', 'flexibility']
   },
-  targetDate: {
-    type: Date,
-    required: true
-  },
-  target: {
+  targetValue: {
     type: Number,
     required: true
   },
-  currentProgress: {
+  currentValue: {
     type: Number,
     default: 0
   },
+  deadline: {
+    type: Date,
+    required: true
+  },
   status: {
     type: String,
-    enum: ['in-progress', 'completed', 'abandoned'],
+    enum: ['in-progress', 'completed', 'failed'],
     default: 'in-progress'
   }
 }, {
@@ -43,5 +39,4 @@ const goalSchema = new mongoose.Schema({
 });
 
 const Goal = mongoose.model('Goal', goalSchema);
-
 export default Goal;
