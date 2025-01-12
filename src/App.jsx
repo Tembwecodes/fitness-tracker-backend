@@ -1,20 +1,20 @@
 // src/App.jsx
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Login from './components/auth/Login';
-import Register from './components/auth/Register';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import Sidebar from './components/layout/Sidebar';
+import Dashboard from './pages/Dashboard';
+import Workouts from './pages/Workouts';
+import Goals from './pages/Goals';
 
 function App() {
   return (
     <Router>
       <div className="app">
-        <nav>
-          <h1>Fitness Tracker</h1>
-        </nav>
-        <main>
+        <Sidebar />
+        <main className="main-content">
           <Routes>
-            <Route path="/" element={<div>Welcome to Fitness Tracker</div>} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
+            <Route path="/" element={<Dashboard />} />
+            <Route path="/workouts" element={<Workouts />} />
+            <Route path="/goals" element={<Goals />} />
           </Routes>
         </main>
       </div>

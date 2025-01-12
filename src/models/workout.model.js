@@ -1,4 +1,4 @@
-// src/models/workout.model.js
+// backend/src/models/workout.model.js
 import mongoose from 'mongoose';
 
 const exerciseSchema = new mongoose.Schema({
@@ -26,6 +26,11 @@ const workoutSchema = new mongoose.Schema({
     ref: 'User',
     required: true
   },
+  date: {
+    type: Date,
+    required: true,
+    default: Date.now
+  },
   type: {
     type: String,
     required: true,
@@ -36,15 +41,10 @@ const workoutSchema = new mongoose.Schema({
     required: true
   },
   exercises: [exerciseSchema],
-  notes: String,
-  date: {
-    type: Date,
-    default: Date.now
-  }
+  notes: String
 }, {
   timestamps: true
 });
 
 const Workout = mongoose.model('Workout', workoutSchema);
-
 export default Workout;

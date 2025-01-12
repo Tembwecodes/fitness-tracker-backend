@@ -1,4 +1,4 @@
-// src/models/goal.model.js
+// backend/src/models/goal.model.js
 import mongoose from 'mongoose';
 
 const goalSchema = new mongoose.Schema({
@@ -31,7 +31,7 @@ const goalSchema = new mongoose.Schema({
   },
   status: {
     type: String,
-    enum: ['in-progress', 'completed', 'failed'],
+    enum: ['in-progress', 'completed', 'abandoned'],
     default: 'in-progress'
   }
 }, {
